@@ -1,2 +1,6 @@
+wordVectors.txt
 *.pyc
 *.zip
+socher_vectors.txt
+vocab.txt
+logfile
