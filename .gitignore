@@ -1,0 +1,5 @@
+socher_vectors.txt
+wordVectors.txt
+*pyc
+*zip
+logfile
