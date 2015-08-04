@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>WordSims</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+    <div class="page-header">
+        <h1>WordSims.io <small>word similarity benchmarking</small></h1>
+    </div>
+
+
+ 
+    <p class="lead"> Simple web app to benchmark vectorial word representations on the most common word similarity/relatedness benchmarks. Upload your vectors in space separated format "word 0.0 0.35 1.0", choose the similarity metric and click on the blue button. The app calculates the Spearman’s rho between word-vector similarities and human similarity judgments. The confidence intervals are calculated using bootstrap provided by the scikit-bootstrap module.</p>
+ 
+
+<br>
+<br>
+
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+	 
+
+	<div class="form-group boarder">
+    	<label for="upload" style="font-size:25px">1. Upload your word vectors</label>
+    	<input type="file" name="upload">
+    	<p class="help-block">Example block-level help text here.</p>
+  	</div>
+  <!--	<label for="upload" style="font-size:25px">2. Choose the distance metric</label>
+-->
+
+   		<label  for="distance" style="font-size:25px">2. Choose </label>
+  	<div class="radio">
+  		<label>
+
+    	<input type="radio" name="distance" id="optionsRadios1" value="cosine" checked>
+    	Cosine similarity
+    	</label>
+
+	</div>
+
+	<div class="radio">
+  		<label>
+    	<input type="radio" name="distance" id="optionsRadios2" value="jsd">
+    	Jensen-shannon divergence
+  		</label>
+	</div>
+
+
+  	<div class="form-group">
+         <button type="submit" class="btn btn-primary">3. Run Benchmark</button>
+     </div>
+</form>
+
+</body>
+</div>
+</html>
