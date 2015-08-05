@@ -1,19 +1,116 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
+<style>
+.container {
+
+	margin-bottom: 50px;
+}
+.row {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+#push,
+#footer {
+  height: 80px;
+}
+#footer {
+  background-color: #eee;
+  font-size: 20px;
+}
+
+</style>
+<!--
+<style>
+.col-xs-3 {
+    background-color: #2AB7B5;
+}
+
+.col-xs-4 {
+    background-color: #9BF7D6;
+}
+
+.col-xs-5 {
+    background-color: #9BF7D6;
+}
+</style>
+
+-->
 <head>
-  <title>Bootstrap Example</title>
+  <title>WordSims</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 </head>
 <body>
 
 <div class="container">
-  <h1>My First Bootstrap Page</h1>
-  <p>This is some text.</p>
+
+    <div class="page-header">
+        <h1>WordSims.io <small>word similarity benchmarking</small></h1>
+    </div>
+ 
+    <p class="lead"> Simple web app to benchmark vectorial word representations on the most common word similarity/relatedness benchmarks. Upload your vectors in space separated format "word 0.0 0.35 1.0", choose the similarity metric and click on the blue button. The app calculates the Spearman’s rho between word-vector similarities and human similarity judgments. The confidence intervals are calculated using bootstrap provided by the scikit-bootstrap module.</p>
+ 
+
+<br>
+<br>
+
+
+<form  class="form-horizontal" action="/upload" method="post" enctype="multipart/form-data">
+	<div class="row">
+            <div class="col-xs-3">
+                <label style="font-size:25px">
+                	1. Upload vectors</label>
+            </div>
+            <div class="col-xs-4">
+                <label style="font-size:25px">
+                	2. Choose metric</label>
+            </div>
+            <div class="col-xs-5">
+                <label style="font-size:25px">
+                	3. Run benchmark</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-xs-3">
+                <input type="file" name="upload">
+    		    <p class="help-block">Example block-level help text here.</p>
+            </div>
+            <div class="col-xs-4">
+                <div class="radio">
+  					<label>
+					<input type="radio" name="distance" id="optionsRadios1" value="cosine" checked>
+    				Cosine similarity
+    				</label>
+				</div>
+
+				<div class="radio">
+  					<label>
+			    	<input type="radio" name="distance" id="optionsRadios2" value="jsd">
+			    	Jensen-shannon divergence
+			  		</label>
+				</div>
+
+        </div>
+            <div class="col-xs-5">
+         		<button type="submit" class="btn btn-primary">Run</button>
+            </div>
+        </div>
+     </div>
+</form>
+
+</div>
+</body>
 </div>
 
-</body>
+<div id="footer">
+      <div class="container">
+        <p class="muted credit">Footer text whateverr</p>
+      </div>
+</div>
+
 </html>

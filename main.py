@@ -4,7 +4,7 @@ from wordsims.wordsims import WordSim
 
 @route('/')
 def root():
-    return static_file('index.html', root='.')
+    return static_file('test.html', root='.')
 
 @route('/upload', method='POST')
 def do_upload():
