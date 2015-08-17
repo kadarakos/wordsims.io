@@ -1,6 +1,7 @@
 import os
 from bottle import route, request, static_file, run, template
 from wordsims.wordsims import WordSim
+import gzip
 
 @route('/')
 def root():
@@ -22,7 +23,6 @@ def do_upload():
 
     file_path = "{path}/{file}".format(path=save_path, file=upload.filename)
     upload.save(file_path)
-    print distance
     w = WordSim('csv', file_path, distance)
     global file_path
     
@@ -32,6 +32,10 @@ def do_upload():
         return template('error.html', message="""Sorry, but the vectors do not 
                                                 seem to represent
                                                 a probability distribution""")
+    html = html.replace('border="1" class="dataframe"', 
+                        "class='table table-striped table-hover table-condensed'")
+    html = html.replace(' style="text-align: right;"', '')
+    print html
     #return "File successfully saved to '{0}'.".format(save_path)
     return template('results.html', table=html)
 
